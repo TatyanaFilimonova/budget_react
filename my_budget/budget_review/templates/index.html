@@ -1,0 +1,159 @@
+{% extends 'base.html' %}
+{% block title %}
+Budget for user  {{ request.user }}
+{% endblock %}
+
+{% block header %}
+Budget for user  {{  request.user }}, period {{date_start}} : {{date_finish}}
+{% endblock %}
+
+
+
+
+{% block setdate %}
+<form action = "{% url 'view_budget' %}" method = 'post' name ='select dates' >
+    {% csrf_token %}
+    <input type = date name="date_start" min="2021-07-01" value = {{date_start}}>&nbsp
+    <input type = date name="date_finish" min="2021-07-02" value = {{date_finish}}>&nbsp
+    <input type = submit value="Select report period" >
+</form>
+<p></p>
+{% endblock %}
+
+{% block theader_ %}
+<th>
+    Transaction date
+</th>
+<th onclick="sort_by_transaction_class()">
+    Type of transaction
+</th>
+<th>
+    Amount, UAH
+</th>
+{% endblock%}
+
+{% block tbody_ %}
+    <tr>
+        {% if open_balance < 0 %}
+            <td><b><font color="red">{{date_start}}</font></b></td>
+            <td><b><font color="red">Open balance for account</font></b></td>
+            <td><b><font color="red">{{open_balance}}</font></b></td>
+        {% else %}
+            <td><b>{{date_start}}</b></td>
+            <td><b>Open balance for account</b></td>
+            <td><b>{{open_balance}}</b></td>
+        {% endif%}
+    </tr>
+    {% for record in grossbook %}
+        {% if record.amount < 0 %}
+            <tr>
+                <td>
+                    <font color="red">{{record.transaction_date}}</font>
+                </td>
+                <td>
+                    <font color="red">{{record.record_class.record_class}}</font>
+                </td >
+                <td>
+                    <font color="red">{{record.amount}}</font>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td>
+                    {{record.transaction_date}}
+                </td>
+                <td>
+                    {{record.record_class.record_class}}
+                </td >
+                <td>
+                    {{record.amount}}
+                </td>
+            </tr>
+        {% endif %}
+    {% endfor %}
+    <tr>
+        {% if close_balance < 0 %}
+            <td><b><font color="red">{{date_finish}}</font></b></td>
+            <td><b><font color="red">Close balance for account</font></b></td>
+            <td><b><font color="red">{{close_balance}}</font></b></td>
+        {% else %}
+            <td><b>{{date_finish}}</b></td>
+            <td><b>Close balance for account</b></td>
+            <td><b>{{close_balance}}</b></td>
+        {% endif%}
+    </tr>
+{% endblock %}
+{% block footer %}
+<p>
+    <div align="center" width="50%">
+        <b>Turnovers for period: debit &nbsp&nbsp{{debit}},
+            &nbsp&nbsp credit &nbsp&nbsp{{credit}}</b>
+        <br>&nbsp;
+        <br>&nbsp;
+    </div>
+{% endblock %}
+{% block form_ %}
+<div align="center" width="50%">
+        {% load static %}
+        <div class="ext-box">
+            <div class="int-box">
+                <img src="{% static 'budget_review/diagram.gif' %}" alt = "Diagram" width="30" height="30" align="right">
+            </div>
+            <div class="int-box">
+                <a href = "/budget_review/view_chart/{{date_start}}/{{date_finish}}"><b>View base charts for budget period</b></a>
+            </div>
+        </div>
+    </div>
+<p></p>
+<div align = "center">
+    <p></p>
+    <h2 align = 'center'> Some new transaction? Please fill form below:</h2>
+    <form action = "{% url 'add_record' date_start date_finish  %}" method = 'post' name ='add record' align="center" >
+        {% csrf_token %}
+        <input type = date name="transaction_date" min="2021-09-01" value = {{date_finish}}>&nbsp;
+        <select name="record_type" id="record_type"  onchange="fillDropDown()">
+            <option selected value = 1>Debit</option>
+            <option value =-1>Credit</option>
+        </select>&nbsp;
+        <select name="record_class" id = "record_class" >&nbsp;
+        </select>&nbsp;
+        <label for="amount">Amount:</label>
+        <input type = number id="amount" name = 'amount' style="width: 7em" placeholder="0.00" step="1.00">&nbsp;
+        <input type = submit value="Add record">&nbsp;
+        <input type = button value="Add record class" id = 'add transaction class' onclick="redirect_on_click()">
+        <script>
+             function fillDropDown() {
+
+                 var record_classes = {{ record_classes_js |safe }};
+                 let record_type_selector = document.getElementById("record_type");
+                 var val = record_type_selector.value
+                 let select = document.getElementById("record_class");
+                 while (select.options.length > 0) {
+                    select.remove(0);
+                 }
+                 record_classes.forEach(function(class_){
+                 console.log(class_['class_type'])
+                 if (class_['class_type'] == val) {
+                    let option = document.createElement("option");
+                    option.label = class_['record_class'];
+                    option.value = class_['id'];
+                    console.log(option.label);
+                    select.appendChild(option);
+                    }
+                 });
+            }
+
+            fillDropDown()
+
+            function redirect_on_click(){
+                location.href = "/budget_review/add_class/{{date_start}}/{{date_finish}}";
+            }
+
+
+
+        </script>
+    </form>
+
+</div>
+{% endblock%}
+

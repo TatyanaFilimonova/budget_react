@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+</head>
+
+<style>
+
+    #table-wrapper {
+      position:relative;
+     }
+    #table-scroll {
+      height:250px;
+      overflow:auto;
+      margin-top:20px;
+    }
+
+	table, th, td, tr { 
+    		border: 1px solid black;
+    		border-collapse: collapse;
+		  	 		  }
+	table { width: 50%;
+		margin: auto;
+		}
+
+    .messages {
+        width: 50%;
+		background-color: red;
+		align: center;
+				}
+
+	tr:nth-child(odd) {
+  		background-color: #BFC9CA;
+                           }
+	th, td {
+  		padding: 5px;
+		}
+	.negative_value = { color: #800000;}
+
+	font, text, td, div, form { font: 12px arial, sans-serif;  }
+	th { font: 14px arial,
+	     sans-serif;
+	     font-weight: bold;
+	     position: sticky;
+	     top: 0;
+	     background-color: #BFC9CA;
+	   }
+	h2 {font: 18px arial, sans-serif; font-weight: bold;}
+
+	div.ext-box { display: table; width:100%; align: center; width: 30%}
+    div.int-box { display: table-cell; vertical-align: middle; }
+
+
+</style>
+<div align="right"><a href = "/login/login">Login user</a></div>
+<div align = "right"><a href = "/login/logout">Logout user</a></div>
+<h2 align = "center">{% block header %} {% endblock %}</h2>
+<p></p>
+
+<div align = 'center'>
+{% block setdate %}
+
+
+{% endblock %}
+</div>
+
+
+<div id="table-wrapper">
+  <div id="table-scroll">
+     <table>
+        <theader>
+        {% block theader_ %}{% endblock %}
+       </theader>
+       <tbody>
+        {% block tbody_ %}{% endblock %}
+       </tbody>
+     </table>
+  </div>
+</div>
+
+
+{% block footer%} {%endblock %}
+ {% if messages %}
+   <div align="center">
+       {% for message in messages %}
+       <b><p class= "messages" > {{ message }} </p></b>
+       {% endfor %}
+   </div>
+{% endif %}
+{% block form_%} {%endblock %}
+<p></p>
+<div align = 'center'>
+	{% block links %}{% endblock %}
+	
+</div>
+</html>

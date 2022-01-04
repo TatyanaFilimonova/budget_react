@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+</head>
+
+<style>
+
+    font, text, td, div, form { font: 12px arial, sans-serif;  }
+	h2 {font: 18px arial, sans-serif; font-weight: bold;}
+
+
+</style>
+
+<h2 align = "center">{% block header %} {% endblock %}</h2>
+<p></p>
+
+{% block footer%} {%endblock %}
+
+<p></p>
+<div align = 'center'>
+	{% block links %}{% endblock %}
+	
+</div>
+</html>

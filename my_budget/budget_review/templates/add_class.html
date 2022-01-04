@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% block title %}
+Add record class for  {{ request.user }}
+{% endblock %}
+
+{% block header %}
+Add new record class for user  {{  request.user }}
+{% endblock %}
+
+
+
+
+{% block setdate %}
+<form action = "{% url 'add_class' date_start date_finish %}" method = 'post' name ='new class' >
+    {% csrf_token %}
+     <select name="class_type" id="class_type">
+            <option selected value = 1>Debit</option>
+            <option value =-1>Credit</option>
+     </select>&nbsp
+    <input type = text name="class_name" width = 200>&nbsp
+    <input type = submit value="Create new class" >
+</form>
+<p></p>
+{% endblock %}
+
+{% block theader_ %}
+<th>
+    Class type
+</th>
+<th>
+    Existed transaction classes
+</th>
+{% endblock%}
+
+{% block tbody_ %}
+   {% for class_ in record_classes %}
+        {% if class_.class_type < 0 %}
+            <tr>
+                <td>
+                    <font color="red">Credit</font>
+                </td>
+                <td>
+                    <font color="red">{{class_.record_class}}</font>
+                </td >
+            </tr>
+        {% else %}
+            <tr>
+                <td>
+                    Debit
+                </td>
+                <td>
+                    {{class_.record_class}}
+                </td >
+            </tr>
+        {% endif %}
+    {% endfor %}
+
+{% endblock %}
+
+
