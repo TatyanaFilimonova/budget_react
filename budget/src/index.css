@@ -1,0 +1,249 @@
+body {
+    font: 16px "Century Gothic", Futura, sans-serif;
+    margin: 20px;
+}
+
+.FormWrapper{
+    width: 50%;
+    margin: 0 auto;
+    margin-bottom: 10px;
+}
+
+.BottomFormWrapper{
+    width: 50%;
+    margin: 0 auto;
+    display: table;
+    float: none;
+
+}
+
+input[type="text"] {
+    display: block;
+    margin: 0 auto;
+}
+
+.formTable{
+    display: table;
+    float: none;
+    width: 100%;
+}
+
+.Row {
+    display: table-row;
+    width: 100%;
+}
+
+
+
+.Cell {
+    display: table-cell;
+    width: 33%;
+
+}
+
+.Cell_bottom_form {
+    display: table-cell;
+    text-align: center;
+    align-content: center;
+    align-items: center;
+}
+
+.Wrapper{
+    float: none;
+    width: 50%;
+    height: 400px;
+    overflow-y: scroll;
+    margin: 0 auto;
+    background-color: #dcdcdc;
+
+}
+
+.visible-scrollbar, .invisible-scrollbar, .mostly-customized-scrollbar {
+    display: block;
+    width: 10px;
+    overflow: auto;
+    height: 2em;
+}
+
+.Blank{
+    display: table-cell;
+    width: 10em;
+}
+
+.HeaderWrapper {
+    margin: 0 auto;
+    display: table;
+    #flex-direction: row;
+    width: 50%;
+}
+.MiddleWrapper{
+    display: table;
+    width: calc(100% - 17px);
+}
+.TableHeader{
+    width: 100%;
+    background-color: lightskyblue;
+    color: black;
+    display: table-row;
+}
+
+.GrossBook {
+    display: table;
+    #flex-direction: row;
+    width: calc(100%);
+}
+
+h1 {
+    color: dodgerblue;
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.5);
+
+}
+
+.TransactionDebit {
+    display: table-row;
+    width: 100%;
+    background-color: lightskyblue;
+    color: black;
+}
+
+.TransactionCredit {
+    display: table-row;
+    width: 100%;
+    background-color: lightskyblue;
+    color: darkred;
+}
+
+.TransactionId {
+    padding: 0px 0px 0px 5px;
+    display: table-cell;
+    width: 10%;
+    border: 1px solid white;
+}
+
+
+.TransactionType {
+    padding-left: 5px;
+    display: table-cell;
+    text-align: center;
+    width: 23%;
+    border: 1px solid white;
+}
+
+.TransactionClass {
+    padding-left: 5px;
+    display: table-cell;
+    width: 27%;
+    border: 1px solid white;
+}
+
+.TransactionAmount {
+    padding-left: 10px;
+    display: table-cell;
+    width: 25%;
+    border: 1px solid white;
+}
+
+.TransactionDate {
+    padding-left: 10px;
+    display: table-cell;
+    width: 20%;
+    border: 1px solid white;
+}
+
+.modal{
+    position: absolute;
+    background-color: rgba(0,0,0, 0.5);
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.authForm {
+    border-radius: 15px;
+    background-color: rgb(255, 255, 255);
+    width: 50%;
+    height: 50%;
+    margin: 10% auto;
+    text-align: center;
+    display:table;
+}
+
+.authInput{
+    width: 80%;
+    border: 1px solid  lightskyblue;
+    heiht: 30px;
+    font: 14px "Century Gothic", Futura, sans-serif;
+    border-radius: 5px;
+}
+
+.authInput:hover{
+    box-shadow: 2px 2px 2px 2px rgba(0,0,0, 0.5) ;
+    cursor: pointer;}
+
+.budgetButton{
+    border: 2px solid lightskyblue;
+    border-radius: 50%;
+    width: 70px;
+    height: 70px;
+    margin: 10px 10px 10px 10px;
+
+}
+
+.budgetButton:hover{
+    box-shadow: 2px 2px 2px 2px rgba(0,0,0, 0.5) ;
+    cursor: pointer;
+}
+
+.buttonBar {
+    width: 50%;
+    margin: 0 auto;
+    text-align: center;
+    }
+
+.BalanceDebit {
+    display: table-row;
+    width: 100%;
+    background-color: lightskyblue;
+    color: black;
+    font-weight: bold;
+}
+
+.BalanceCredit {
+    display: table-row;
+    width: 100%;
+    background-color: lightskyblue;
+    color: darkred;
+    font-weight: bold;
+
+}
+
+.Chart {
+    /*overflow-y: scroll;*/
+    align-content: center;
+    border-radius: 15px;
+    background-color: rgb(255, 255, 255);
+    width: 50%;
+    height: 700px;
+    margin: 20px auto;
+    float: none;
+
+}
+
+.ChartRow {
+
+    border-radius: 15px;
+    display: table-row;
+    width: 100%;
+    margin: 15px auto;
+}
+
+
+.ChartBody{
+    border-radius: 15px;
+    margin: 0 auto;
+    width: 100%;
+    display: table-cell;
+}
