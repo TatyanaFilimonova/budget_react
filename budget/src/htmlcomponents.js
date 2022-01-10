@@ -5,32 +5,24 @@ function DateSelectForm(props) {
     return(
         <div className="FormWrapper">
             <form>
-            <div className="formTable">
-                    <div className="Row">
-                        <div className="Cell">
+            <div className="formTableFlex">
                             <input type="date"
                                    className="authInput"
                                    name = "Start_date"
                                    onChange={props.onChange}
                                    id = "Start_date"
                                    value={props.start_value}/>
-                        </div>
-                        <div className="Cell">
                             <input type="date"
                                    className="authInput"
                                    name = "End_date"
                                    onChange={props.onChange}
                                    id = "End_date"
                                    value={props.end_value}/>
-                        </div>
-                        <div className="Cell">
                             <button onClick={props.onClick}
                                     className="authInput"
                             >
                                 Set period
                             </button>
-                        </div>
-                    </div>
 
             </div>
             </form>
@@ -270,24 +262,17 @@ function FooterForm(props){
     return(
         <div className="FormWrapper"
              style={{marginTop: "20px"}}>
-            <div className="formTable">
-                <div className="Row">
-                    <div className="Cell">
+            <div className="formTableFlex">
+
                         <button className="authInput"
                                 onClick={props.addRow}
                         >Add row</button>
-                    </div>
-                    <div className="Cell">
                         <button className="authInput"
                                 onClick={props.addClass}
                         >Add class</button>
-                    </div>
-                    <div className="Cell">
                         <button className="authInput"
                                 onClick={props.showChart}
                                 >View diagram</button>
-                    </div>
-                </div>
             </div>
         </div>
     )

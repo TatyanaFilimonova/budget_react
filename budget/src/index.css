@@ -28,6 +28,14 @@ input[type="text"] {
     width: 100%;
 }
 
+.formTableFlex{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    float: none;
+    width: 100%;
+}
+
 .Row {
     display: table-row;
     width: 100%;
@@ -176,6 +184,8 @@ h1 {
     border: 1px solid  lightskyblue;
     heiht: 30px;
     font: 14px "Century Gothic", Futura, sans-serif;
+    margin-right: 10px;
+    margin-let: 10px;
     border-radius: 5px;
 }
 
