@@ -1,14 +1,18 @@
 import {
-    CreateTransactionForm,
-    DateSelectForm,
-    TableHeader,
-    AuthForm,
-    TableBody,
-    CreateClassForm, Balance, FooterForm,  MyLineChart, MyDoughNutChart
-} from "./htmlcomponents";
+     MyLineChart, MyDoughNutChart
+} from "./chartComponents";
+
+import {AuthForm} from "./authForm";
+import {CreateClassForm} from "./createClassForm";
+import {CreateTransactionForm} from "./createTransactionForm";
 import {fetchAuthtoken, validateCreateRowData} from "./utils";
 import {ModalWindow} from "./modals";
 import {fetch_data, put_data, validateNewClass} from "./utils";
+import {DateSelectForm} from "./dateSelectForm";
+import {TableHeader} from "./tableHeader";
+import {TableBody} from "./tableBody";
+import {Balance} from "./balanceData";
+import {FooterForm} from "./footerForm";
 import React from 'react';
 import './index.css';
 import {urls} from "./urls";
@@ -30,6 +34,7 @@ class Budget extends React.Component {
             modalAuthActive: true,
             modalAddRowActive:false,
             modalChartActive: false,
+            modalAddClassActive: false,
             modalMessage: "",
             dailyBalance: null,
             byClass: null,
@@ -97,10 +102,6 @@ class Budget extends React.Component {
                     dailyBalance: dailyBalance[1].balances,
                 })
             }
-            console.log("By class");
-            console.log(byClass[0]);
-            console.log(byClass[1]);
-            console.log(byClass[1].length);
             if (byClass[0]==='OK' && byClass[1].expenses.length>0) {
                 this.setState({
                     byClass: byClass[1].expenses,
@@ -257,6 +258,11 @@ class Budget extends React.Component {
         })
     }
 
+    handleCansel(e){
+        e.preventDefault();
+        this.setState({modalAddClassActive: false});
+        this.setState({modalAddRowActive: false});
+    }
 
     render() {
 
@@ -275,28 +281,26 @@ class Budget extends React.Component {
                                            transactionTypes={this.state.transactionTypes}
                                            modalMessage = {this.state.modalMessage}
                                            onSubmit = {(e) =>this.handleSubmitAddRow(e)}
-                                           onCansel = {(e) =>this.setState({modalAddRowActive: false})}
+                                           onCansel = {(e) =>this.handleCansel(e)}
                     />
                 </ModalWindow>
                     <ModalWindow modalActive={this.state.modalAddClassActive}
                                  onclick = {(e)=>{this.handleClickModal(e)}}>
 
                     <CreateClassForm onSubmit = {(e) =>this.handleSubmitAddClass(e)}
-                                     onCansel = {(e) =>this.setState({modalAddClassActive: false})}
+                                     onCansel = {(e) =>this.handleCansel(e)}
                         />
                     </ModalWindow>
 
                 <ModalWindow modalActive={this.state.modalChartActive}
                              onclick = {(e)=>{this.handleClickModal(e)}}>
                     <div className="Chart">
-                        <div className="ChartRow">
                             <MyLineChart dailyBalance = {this.state.dailyBalance}
                                          name = {"Daily balance chart"}
                             />
                             <MyDoughNutChart byClass = {this.state.byClass}
                                              name = {"Expenses by classes"}
                             />
-                        </div>
                     </div>
                 </ModalWindow>
 

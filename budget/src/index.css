@@ -1,16 +1,49 @@
-body {
-    font: 16px "Century Gothic", Futura, sans-serif;
-    margin: 20px;
+@media (min-width: 576px) {
+    html, body{
+        font: 10px "Century Gothic", Futura, sans-serif;
+        margin: 10px;
+    }
+    .authInput{
+        font: 10px "Century Gothic", Futura, sans-serif;
+    }
+    .Chart {
+        width: 90%;
+    }
+    .authForm{
+        width: 70%;
+    }
+    .Wrapper, .WrapperHeader, .FormWrapper, .BottomFormWrapper {
+        width: 80%;
+    }
 }
 
+@media (min-width: 1000px) {
+    html, body{
+        font: 14px "Century Gothic", Futura, sans-serif;
+        margin: 20px;
+    }
+    .authInput{
+        font: 14px "Century Gothic", Futura, sans-serif;
+    }
+    .Chart {
+        width: 50%
+    }
+    .authForm{
+        width: 50%;
+    }
+    .Wrapper, .WrapperHeader, .FormWrapper, .BottomFormWrapper {
+        width: 50%;
+    }
+}
+
+
+
 .FormWrapper{
-    width: 50%;
     margin: 0 auto;
     margin-bottom: 10px;
 }
 
 .BottomFormWrapper{
-    width: 50%;
     margin: 0 auto;
     display: table;
     float: none;
@@ -58,8 +91,16 @@ input[type="text"] {
 
 .Wrapper{
     float: none;
-    width: 50%;
     height: 400px;
+    overflow-y: scroll;
+    margin: 0 auto;
+    background-color: #dcdcdc;
+
+}
+
+.WrapperHeader{
+    float: none;
+    height: auto;
     overflow-y: scroll;
     margin: 0 auto;
     background-color: #dcdcdc;
@@ -78,22 +119,6 @@ input[type="text"] {
     width: 10em;
 }
 
-.HeaderWrapper {
-    margin: 0 auto;
-    display: table;
-    #flex-direction: row;
-    width: 50%;
-}
-.MiddleWrapper{
-    display: table;
-    width: calc(100% - 17px);
-}
-.TableHeader{
-    width: 100%;
-    background-color: lightskyblue;
-    color: black;
-    display: table-row;
-}
 
 .GrossBook {
     display: table;
@@ -172,24 +197,42 @@ h1 {
 .authForm {
     border-radius: 15px;
     background-color: rgb(255, 255, 255);
-    width: 50%;
     height: 50%;
     margin: 10% auto;
     text-align: center;
-    display:table;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-content: center;
+    row-gap: 10px;
+    padding-bottom: 20px;
 }
 
 .authInput{
     width: 80%;
     border: 1px solid  lightskyblue;
     heiht: 30px;
-    font: 14px "Century Gothic", Futura, sans-serif;
     margin-right: 10px;
     margin-let: 10px;
     border-radius: 5px;
 }
 
+.authInputNoFlex{
+    width: 80%;
+    border: 1px solid  lightskyblue;
+    heiht: 30px;
+    font: 14px "Century Gothic", Futura, sans-serif;
+    border-radius: 5px;
+    margin: 0px 0px 0px 0px;
+    padding: 0px 0px 0px 0px;
+    align-self: center;
+}
+
 .authInput:hover{
+    box-shadow: 2px 2px 2px 2px rgba(0,0,0, 0.5) ;
+    cursor: pointer;}
+
+.authInputNoFlex:hover{
     box-shadow: 2px 2px 2px 2px rgba(0,0,0, 0.5) ;
     cursor: pointer;}
 
@@ -211,7 +254,7 @@ h1 {
     width: 50%;
     margin: 0 auto;
     text-align: center;
-    }
+}
 
 .BalanceDebit {
     display: table-row;
@@ -233,27 +276,23 @@ h1 {
 .Chart {
     /*overflow-y: scroll;*/
     align-content: center;
-    border-radius: 15px;
+    border-radius: 0px;
     background-color: rgb(255, 255, 255);
-    width: 50%;
-    height: 700px;
+    height: 70%;
+    overflow-y: scroll;
     margin: 20px auto;
-    float: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-content: space-around;
 
 }
 
-.ChartRow {
-
-    border-radius: 15px;
-    display: table-row;
-    width: 100%;
-    margin: 15px auto;
+.ChartData{
+    display: flex;
+    margin: auto;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
 }
 
-
-.ChartBody{
-    border-radius: 15px;
-    margin: 0 auto;
-    width: 100%;
-    display: table-cell;
-}
