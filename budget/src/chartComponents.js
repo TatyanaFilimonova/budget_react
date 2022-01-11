@@ -15,7 +15,7 @@ function MyLineChart(props) {
         width = window.innerWidth*0.9;
     }
     else {
-        width = window.innerWidth*0.5;
+        width = window.innerWidth*0.46;
     }
 
     const lineChart =
@@ -55,7 +55,7 @@ function MyDoughNutChart(props) {
         width = window.innerWidth*0.9;
     }
     else {
-        width = window.innerWidth*0.5;
+        width = window.innerWidth*0.46;
     }
     if (props.byClass !== null) {
         chartData = props.byClass.map((item, step) => {
